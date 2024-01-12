@@ -12,7 +12,7 @@ export const GetUserGroups = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.log("Error en getUserGroups - groups_table.controllers.js:", error);
+    console.log("Error en getUserGroups - groups.controllers.js:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -22,9 +22,13 @@ export const CreateGroup = async (req, res) => {
     const { nameGroup, nameSection, nameExtraSection, userId, groupToken } =
       req.body;
 
+    const [count] = await connection.query(
+      `SELECT COUNT(*) FROM groups_table;`
+    );
+
     const [rows] = await connection.query(
-      "INSERT INTO groups_table (nameGroup, nameSection, nameExtraSection, createdBy, groupToken) VALUES (?, ?, ?, ?, ?)",
-      [nameGroup, nameSection, nameExtraSection, userId, groupToken]
+      "INSERT INTO groups_table (groupId, nameGroup, nameSection, nameExtraSection, createdBy, groupToken) VALUES (?, ?, ?, ?, ?, ?)",
+      [parseInt(count[0]["COUNT(*)"]), nameGroup, nameSection, nameExtraSection, userId, groupToken]
     );
 
     const createTableQuery = `CREATE TABLE ${groupToken} (
@@ -44,7 +48,7 @@ export const CreateGroup = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.error("Error en createGroup en groups_table.controllers.js", error);
+    console.error("Error en createGroup en groups.controllers.js", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -62,7 +66,7 @@ export const DeleteGroup = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.log("Error en deleteGroup - groups_table.controllers.js:", error);
+    console.log("Error en deleteGroup - groups.controllers.js:", error);
     res.status(500).json({ message: error.message });
   }
 };
