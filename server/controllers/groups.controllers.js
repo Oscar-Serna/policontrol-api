@@ -4,7 +4,7 @@ export const GetUserGroups = async (req, res) => {
   try {
     const tokenUser = req.query.token;
     const [rows] = await connection.query(
-      "SELECT nameGroup, nameSection, nameExtraSection, groupToken, persons, groupId FROM groups JOIN users ON users.tokenUser = ? AND userId = createdBy;",
+      "SELECT nameGroup, nameSection, nameExtraSection, groupToken, persons, groupId FROM groups_table JOIN users ON users.tokenUser = ? AND userId = createdBy;",
       [tokenUser]
     );
 
@@ -12,7 +12,7 @@ export const GetUserGroups = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.log("Error en getUserGroups - groups.controllers.js:", error);
+    console.log("Error en getUserGroups - groups_table.controllers.js:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -23,7 +23,7 @@ export const CreateGroup = async (req, res) => {
       req.body;
 
     const [rows] = await connection.query(
-      "INSERT INTO groups (nameGroup, nameSection, nameExtraSection, createdBy, groupToken) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO groups_table (nameGroup, nameSection, nameExtraSection, createdBy, groupToken) VALUES (?, ?, ?, ?, ?)",
       [nameGroup, nameSection, nameExtraSection, userId, groupToken]
     );
 
@@ -44,7 +44,7 @@ export const CreateGroup = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.error("Error en createGroup en groups.controllers.js", error);
+    console.error("Error en createGroup en groups_table.controllers.js", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -54,7 +54,7 @@ export const DeleteGroup = async (req, res) => {
     const groupToken = req.query.token;
 
     const [rows] = await connection.query(
-      "DELETE FROM groups WHERE groupToken = ?",
+      "DELETE FROM groups_table WHERE groupToken = ?",
       [groupToken]
     );
 
@@ -62,7 +62,7 @@ export const DeleteGroup = async (req, res) => {
 
     res.status(200).json(rows);
   } catch (error) {
-    console.log("Error en deleteGroup - groups.controllers.js:", error);
+    console.log("Error en deleteGroup - groups_table.controllers.js:", error);
     res.status(500).json({ message: error.message });
   }
 };

@@ -21,7 +21,7 @@ export const CreateMember = async (req, res) => {
       req.body;
 
     const [[{ groupId }]] = await connection.query(
-      "SELECT groupId FROM groups WHERE ? = groupToken;",
+      "SELECT groupId FROM groups_table WHERE ? = groupToken;",
       [groupToken]
     );
 
@@ -37,7 +37,7 @@ export const CreateMember = async (req, res) => {
 
     //ACTUALIZAMOS EL CAMPO EN EL REGISTRO CORRESPONDIENTE
     const [updateMembersNum] = await connection.query(
-      `UPDATE groups SET persons = ? WHERE groupToken = ?;`,
+      `UPDATE groups_table SET persons = ? WHERE groupToken = ?;`,
       [count[0]["COUNT(*)"], groupToken]
     );
 
@@ -67,7 +67,7 @@ export const DeleteMember = async (req, res) => {
 
     //ACTUALIZAMOS EL CAMPO EN EL REGISTRO CORRESPONDIENTE
     const [updateMembersNum] = await connection.query(
-      `UPDATE groups SET persons = ? WHERE groupToken = ?;`,
+      `UPDATE groups_table SET persons = ? WHERE groupToken = ?;`,
       [parseInt(count[0]["COUNT(*)"]), groupToken]
     );
 
