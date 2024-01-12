@@ -40,7 +40,7 @@ export async function CreateNewUser(req, res) {
   try {
     const [rows] = await connection.query(
       "INSERT INTO users ( userId, username, typeUser, password, contact, reminderKey, tokenUser ) VALUES ( ?, ?, ?, ?, ?, ?)",
-      [(Math.random() * 1000) ,username, typeUser, password, contact, reminderKey, tokenUser]
+      [Math.round(Math.random() * 1000), ,username, typeUser, password, contact, reminderKey, tokenUser]
       );
 
       // console.log(rows);
