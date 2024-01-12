@@ -1,4 +1,4 @@
-import mysql from 'mysql2/promise';
+import { createPool } from 'mysql2/promise';
 
 import {
   DB_USER,
@@ -8,7 +8,7 @@ import {
   DB_PORT
 } from "./serverConfig.js";
 
-export const connection = await mysql.createConnection({
+export const connection = createPool({
   port: DB_PORT,
   user: DB_USER,
   password: DB_PASSWORD,
