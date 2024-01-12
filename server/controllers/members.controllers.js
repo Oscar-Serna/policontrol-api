@@ -30,8 +30,8 @@ export const CreateMember = async (req, res) => {
     );
 
     const [rows] = await connection.query(
-      `INSERT INTO ${groupToken} ( memberId, nameMember, surnameMember, ageMember, groupMember, dataQrCode) VALUES (?, ?, ?, ?, ?, ?);`,
-      [parseInt(countId[0]["COUNT(*)"]), nameMember, surnameMember, ageMember, groupId, dataQrCode]
+      `INSERT INTO ${groupToken} ( memberId, nameMember, surnameMember, ageMember, ticketMember, groupMember, dataQrCode) VALUES (?, ?, ?, ?, ?, ?, ?);`,
+      [parseInt(countId[0]["COUNT(*)"]), nameMember, surnameMember, ageMember, "SIN TICKET", groupId, dataQrCode]
     );
 
     //OBTENEMOS LA CANTIDAD DE INTEGRANTES
