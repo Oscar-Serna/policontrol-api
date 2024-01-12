@@ -4,11 +4,11 @@ CREATE TABLE `name_table`(
   nameMember TEXT NOT NULL,
   surnameMember TEXT NOT NULL,
   ageMember INTEGER NOT NULL,
-  ticketMember TEXT NOT NULL DEFAULT "SIN TICKET",
+  ticketMember TEXT NOT NULL,
   groupMember INTEGER NOT NULL,
   assistants INTEGER,
-  isChecked BOOLEAN DEFAULT NOT NULL DEFAULT 0,
-  totalActivities TEXT NOT NULL DEFAULT "[]",
+  isChecked BOOLEAN NOT NULL DEFAULT 0,
+  totalActivities TEXT NOT NULL,
   dataQrCode TEXT
 );
 
