@@ -36,11 +36,11 @@ export const CreateGroup = async (req, res) => {
       nameMember TEXT NOT NULL,
       surnameMember TEXT NOT NULL,
       ageMember INTEGER NOT NULL,
-      ticketMember TEXT NOT NULL DEFAULT "SIN TICKET",
+      ticketMember TEXT NOT NULL,
       groupMember INTEGER NOT NULL,
       assistants INTEGER NOT NULL DEFAULT 0,
       isChecked BOOLEAN NOT NULL DEFAULT 0,
-      totalActivities TEXT NOT NULL DEFAULT "[]",
+      totalActivities TEXT NOT NULL,
       dataQrCode TEXT
     );`;
 
