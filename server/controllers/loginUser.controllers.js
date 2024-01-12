@@ -38,9 +38,13 @@ export async function CreateNewUser(req, res) {
   }
 
   try {
+    const [count] = await connection.query(
+      `SELECT COUNT(*) FROM users;`
+    );
+
     const [rows] = await connection.query(
       "INSERT INTO users ( userId, username, typeUser, password, contact, reminderKey, tokenUser ) VALUES ( ?, ?, ?, ?, ?, ?)",
-      [Math.round(Math.random() * 1000),username, typeUser, password, contact, reminderKey, tokenUser]
+      [parseInt(count[0]["COUNT(*)"]),username, typeUser, password, contact, reminderKey, tokenUser]
       );
 
       // console.log(rows);
