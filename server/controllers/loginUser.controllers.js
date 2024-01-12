@@ -43,7 +43,7 @@ export async function CreateNewUser(req, res) {
     );
 
     const [rows] = await connection.query(
-      "INSERT INTO users ( userId, username, typeUser, password, contact, reminderKey, tokenUser ) VALUES ( ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO users ( userId, username, typeUser, password, contact, reminderKey, tokenUser ) VALUES ( ?, ?, ?, ?, ?, ?, ?)",
       [parseInt(count[0]["COUNT(*)"]),username, typeUser, password, contact, reminderKey, tokenUser]
       );
 
