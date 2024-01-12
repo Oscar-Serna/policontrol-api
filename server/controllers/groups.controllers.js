@@ -8,7 +8,7 @@ export const GetUserGroups = async (req, res) => {
       [tokenUser]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
   } catch (error) {
