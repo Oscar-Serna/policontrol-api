@@ -45,7 +45,7 @@ export const CreateMember = async (req, res) => {
       [count[0]["COUNT(*)"], groupToken]
     );
 
-    console.log(updateMembersNum);
+    // console.log(updateMembersNum);
 
     res.json(rows);
   } catch (error) {
@@ -75,9 +75,9 @@ export const DeleteMember = async (req, res) => {
       [parseInt(count[0]["COUNT(*)"]), groupToken]
     );
 
-    console.log(updateMembersNum);
+    // console.log(updateMembersNum);
 
-    console.log(rows);
+    // console.log(rows);
 
     res.json(rows);
   } catch (error) {

@@ -9,7 +9,7 @@ export const GetAds = async (req, res) => {
       [tokenGroup]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
   } catch (error) {
@@ -28,7 +28,7 @@ export const CreateAd = async (req, res) => {
       [titleAd, descriptionAd]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
   } catch (error) {
@@ -46,7 +46,7 @@ export const DeleteAd = async (req, res) => {
       [tokenGroup]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
   } catch (error) {

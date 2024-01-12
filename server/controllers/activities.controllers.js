@@ -9,7 +9,7 @@ export const GetActivites = async (req, res) => {
       [tokenGroup]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(500).json(rows);
   } catch (error) {
@@ -34,7 +34,7 @@ export const CreateActivity = async (req, res) => {
       [titleActivity, subtitleActivity, descriptionActivity, forMembers, tokenGroup, limitDate]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
 
@@ -53,7 +53,7 @@ export const DeleteActivity = async (req, res) => {
       [activityId]
     )
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
 

@@ -11,7 +11,7 @@ export const GetNotifications = async (req, res) => {
       [tokenUser]
     );
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
 
@@ -31,7 +31,7 @@ export const CreateNotification = async (req, res) => {
       [title, subtitle, message, forUser, hour]
     )
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
 
@@ -51,7 +51,7 @@ export const DeleteNotification = async (req, res) => {
       [notificationId]
     )
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
 

@@ -12,7 +12,7 @@ export const GetClassmateRegisted = async (req, res) => {
 
     console.log("DataQrCode: ", dataQrCode);
 
-    console.log(rows);
+    // console.log(rows);
 
     res.status(200).json(rows);
 

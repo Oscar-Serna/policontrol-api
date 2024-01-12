@@ -6,10 +6,9 @@ export async function GetUserLogged(req, res) {
 
   try {
 
-
     const [ rows ] = await connection.query("SELECT tokenUser FROM users WHERE (username = ? OR contact = ?) AND password = ?", [username, username, password]);
 
-    console.log(rows);
+    // console.log(rows);
 
     res.json(rows);
   } catch (error) {
