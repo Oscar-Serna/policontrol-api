@@ -25,9 +25,13 @@ export const CreateMember = async (req, res) => {
       [groupToken]
     );
 
+    const [countId] = await connection.query(
+      `SELECT COUNT(*) FROM ${groupToken};`
+    );
+
     const [rows] = await connection.query(
-      `INSERT INTO ${groupToken} ( nameMember, surnameMember, ageMember, groupMember, dataQrCode) VALUES (?, ?, ?, ?, ?);`,
-      [nameMember, surnameMember, ageMember, groupId, dataQrCode]
+      `INSERT INTO ${groupToken} ( memberId, nameMember, surnameMember, ageMember, groupMember, dataQrCode) VALUES (?, ?, ?, ?, ?, ?);`,
+      [parseInt(countId[0]["COUNT(*)"]), nameMember, surnameMember, ageMember, groupId, dataQrCode]
     );
 
     //OBTENEMOS LA CANTIDAD DE INTEGRANTES
